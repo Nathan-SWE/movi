@@ -3,8 +3,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./services/firebase";
 import { useAuthStore } from "./stores/useAuthStore";
 
-import "./App.css";
-
 function App() {
   const setUser = useAuthStore((state) => state.setUser);
   const setLoading = useAuthStore((state) => state.setLoading);
