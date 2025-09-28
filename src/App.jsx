@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import { Outlet } from "react-router-dom";
 import { auth } from "./services/firebase";
 import { useAuthStore } from "./stores/useAuthStore";
 
@@ -17,10 +18,7 @@ function App() {
 
   return (
     <>
-      <img
-        src="https://i.pinimg.com/originals/ea/6f/95/ea6f95a379addc1c241ed91391974a86.gif"
-        alt="pochita"
-      />
+      <Outlet />
     </>
   );
 }
