@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MantineProvider } from "@mantine/core";
+import { MantineEmotionProvider, emotionTransform } from "@mantine/emotion";
 import "@mantine/core/styles.css";
 
 import { theme } from "./theme.js";
@@ -14,9 +15,11 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <MantineProvider theme={theme}>
-        <Router />
-      </MantineProvider>
+      <MantineEmotionProvider>
+        <MantineProvider theme={theme} stylesTransform={emotionTransform}>
+          <Router />
+        </MantineProvider>
+      </MantineEmotionProvider>
     </QueryClientProvider>
   </StrictMode>
 );
