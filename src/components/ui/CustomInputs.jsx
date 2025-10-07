@@ -1,4 +1,4 @@
-import { Paper, PasswordInput, TextInput } from "@mantine/core";
+import { Paper, PasswordInput, TextInput, Text } from "@mantine/core";
 
 const newInputStyles = (theme) => ({
   input: {
@@ -37,18 +37,45 @@ function InputWrapper({ children }) {
 }
 
 function CustomTextInput(props) {
+  const { error, ...rest } = props;
   return (
-    <InputWrapper>
-      <TextInput variant="unstyled" {...props} styles={newInputStyles} />
-    </InputWrapper>
+    <div>
+      <InputWrapper>
+        <TextInput
+          variant="unstyled"
+          styles={newInputStyles}
+          error={!!error}
+          {...rest}
+        />
+      </InputWrapper>
+      {error && (
+        <Text c="danger-red" fz="xs" ml="md">
+          {error}
+        </Text>
+      )}
+    </div>
   );
 }
 
 function CustomPasswordInput(props) {
+  const { error, ...rest } = props;
   return (
-    <InputWrapper>
-      <PasswordInput variant="unstyled" {...props} styles={newInputStyles} />
-    </InputWrapper>
+    <div>
+      <InputWrapper>
+        <PasswordInput
+          variant="unstyled"
+          styles={newInputStyles}
+          error={!!error}
+          {...rest}
+        />
+      </InputWrapper>
+
+      {error && (
+        <Text c="danger-red" fz="xs" ml="md">
+          {error}
+        </Text>
+      )}
+    </div>
   );
 }
 
