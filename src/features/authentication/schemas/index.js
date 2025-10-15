@@ -40,3 +40,7 @@ export const loginSchema = zod.object({
   email: zod.email({ message: 'Invalid Email' }),
   password: zod.string().min(1, { message: 'Password is required' }),
 });
+
+export const resetPasswordSchema = zod.object({
+  email: zod.email({ message: 'Invalid Email.' }),
+});

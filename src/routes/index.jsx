@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '../App';
 import AuthPage from '../pages/Auth/AuthPage';
 import LoginPage from '../pages/Auth/LoginPage';
+import RecoveryPassword from '../pages/Auth/RecoveryPassword';
 import SignUpPage from '../pages/Auth/SignUpPage';
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginPage />,
+      },
+      {
+        path: 'recovery',
+        element: <RecoveryPassword />,
       },
     ],
   },

@@ -68,7 +68,9 @@ export default function LoginPage() {
                 />
                 <Flex justify="flex-end">
                   <Text fz="xxs" mt="xxs">
-                    <Anchor href="#">Forgot Password?</Anchor>
+                    <Anchor component={Link} to="/auth/recovery">
+                      Forgot Password?
+                    </Anchor>
                   </Text>
                 </Flex>
               </div>
