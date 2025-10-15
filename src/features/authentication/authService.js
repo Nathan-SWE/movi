@@ -1,12 +1,18 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
 
 import { auth } from '../../services/firebase';
+
+const handleAuthError = (context, error) => {
+  console.error(`${context} error: ${error.code || error.message}`);
+  throw error;
+};
 
 export const signUpWithEmail = async (email, password) => {
   try {
@@ -17,8 +23,7 @@ export const signUpWithEmail = async (email, password) => {
     );
     return userCredential.user;
   } catch (error) {
-    console.error('SignUp error: ', error.message);
-    throw error;
+    handleAuthError('SignUp', error);
   }
 };
 
@@ -31,8 +36,15 @@ export const signInWithEmail = async (email, password) => {
     );
     return userCredential.user;
   } catch (error) {
-    console.log('Login error: ', error.message);
-    throw error;
+    handleAuthError('Login', error);
+  }
+};
+
+export const recoverPassword = async (email) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+  } catch (error) {
+    handleAuthError('Password reset', error);
   }
 };
 
@@ -42,8 +54,7 @@ export const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, googleProvider);
     return result.user;
   } catch (error) {
-    console.log('Google login error: ', error.message);
-    throw error;
+    handleAuthError('Google login', error);
   }
 };
 
@@ -51,7 +62,6 @@ export const signOutUser = async () => {
   try {
     await signOut(auth);
   } catch (error) {
-    console.log('Logout error: ', error.message);
-    throw error;
+    handleAuthError('Logout', error);
   }
 };
