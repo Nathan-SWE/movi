@@ -1,7 +1,3 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { z as zod } from "zod";
 import {
   Paper,
   Title,
@@ -14,51 +10,18 @@ import {
   Stack,
   ActionIcon,
   Flex,
-} from "@mantine/core";
-import { useForm } from "@mantine/form";
-import { zod4Resolver } from "mantine-form-zod-resolver";
-import { IconChevronLeft } from "@tabler/icons-react";
+} from '@mantine/core';
+import { IconChevronLeft } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 
-import { signInWithEmail } from "../../features/authentication/authService";
 import {
   CustomTextInput,
   CustomPasswordInput,
-} from "../../components/ui/CustomInputs";
-
-const loginSchema = zod.object({
-  email: zod.email({ message: "Invalid Email" }),
-  password: zod.string().min(1, { message: "Password is required" }),
-});
+} from '../../components/ui/CustomInputs';
+import useLoginForm from '../../features/authentication/hooks/useLoginForm';
 
 export default function LoginPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const form = useForm({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validate: zod4Resolver(loginSchema),
-  });
-
-  const handleSubmit = async (values) => {
-    setIsLoading(true);
-    try {
-      await signInWithEmail(values.email, values.password);
-      console.log("Login successful!");
-      navigate("/auth"); //navegar para home depois
-    } catch (error) {
-      if (error.code === "auth/invalid-credential") {
-        form.setFieldError("email", "Email or password incorrect.");
-        form.setFieldError("password", "Email or password incorrect.");
-      } else {
-        console.log(`An unexpected error occurred: ${error.message}`);
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { form, isLoading, handleSubmit } = useLoginForm();
 
   return (
     <Container size="xs" w="100%" mt="xl">
@@ -86,7 +49,7 @@ export default function LoginPage() {
               Welcome back!
             </Title>
             <Text align="center" c="dimmed" fz="sm">
-              Your favorite movie is waiting, let's find it!
+              Your favorite movie is waiting, let&apos;s find it!
             </Text>
           </Stack>
 
@@ -95,13 +58,13 @@ export default function LoginPage() {
               <CustomTextInput
                 label="Email Address"
                 placeholder="user@email.com"
-                {...form.getInputProps("email")}
+                {...form.getInputProps('email')}
               />
               <div>
                 <CustomPasswordInput
                   label="Password"
                   placeholder="password123"
-                  {...form.getInputProps("password")}
+                  {...form.getInputProps('password')}
                 />
                 <Flex justify="flex-end">
                   <Text fz="xxs" mt="xxs">
