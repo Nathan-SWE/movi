@@ -1,7 +1,3 @@
-import { Link } from "react-router-dom";
-import { signInWithGoogle } from "../../features/authentication/authService";
-import ImageSkeleton from "../../components/ui/ImageSkeleton";
-import GoogleLogo from "../../assets/icon-google.svg";
 import {
   Container,
   Stack,
@@ -12,7 +8,12 @@ import {
   Image,
   Anchor,
   Divider,
-} from "@mantine/core";
+} from '@mantine/core';
+import { Link } from 'react-router-dom';
+
+import GoogleLogo from '../../assets/icon-google.svg';
+import ImageSkeleton from '../../components/ui/ImageSkeleton';
+import { signInWithGoogle } from '../../features/authentication/authService';
 
 export default function AuthPage() {
   return (
@@ -50,7 +51,7 @@ export default function AuthPage() {
             fullWidth
             size="lg"
             variant="default"
-            bg={"light-gray.1"}
+            bg={'light-gray.1'}
             fw={500}
             leftSection={<Image src={GoogleLogo} h={20} alt="Google Logo" />}
             onClick={signInWithGoogle}

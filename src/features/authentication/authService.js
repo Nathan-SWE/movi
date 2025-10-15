@@ -4,9 +4,9 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-} from "firebase/auth";
+} from 'firebase/auth';
 
-import { auth } from "../../services/firebase";
+import { auth } from '../../services/firebase';
 
 export const signUpWithEmail = async (email, password) => {
   try {
@@ -17,7 +17,7 @@ export const signUpWithEmail = async (email, password) => {
     );
     return userCredential.user;
   } catch (error) {
-    console.error("SignUp error: ", error.message);
+    console.error('SignUp error: ', error.message);
     throw error;
   }
 };
@@ -31,7 +31,7 @@ export const signInWithEmail = async (email, password) => {
     );
     return userCredential.user;
   } catch (error) {
-    console.log("Login error: ", error.message);
+    console.log('Login error: ', error.message);
     throw error;
   }
 };
@@ -42,7 +42,7 @@ export const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, googleProvider);
     return result.user;
   } catch (error) {
-    console.log("Google login error: ", error.message);
+    console.log('Google login error: ', error.message);
     throw error;
   }
 };
@@ -51,7 +51,7 @@ export const signOutUser = async () => {
   try {
     await signOut(auth);
   } catch (error) {
-    console.log("Logout error: ", error.message);
+    console.log('Logout error: ', error.message);
     throw error;
   }
 };

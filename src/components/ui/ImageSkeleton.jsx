@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Skeleton, Image } from "@mantine/core";
+import { useState } from 'react';
+
+import { Skeleton, Image } from '@mantine/core';
 
 export default function ImageSkeleton({ src, alt, ...rest }) {
   const [loaded, setLoaded] = useState(false);

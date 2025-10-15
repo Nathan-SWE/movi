@@ -1,8 +1,10 @@
-import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { Outlet } from "react-router-dom";
-import { auth } from "./services/firebase";
-import { useAuthStore } from "./stores/useAuthStore";
+import { useEffect } from 'react';
+
+import { onAuthStateChanged } from 'firebase/auth';
+import { Outlet } from 'react-router-dom';
+
+import { auth } from './services/firebase';
+import { useAuthStore } from './stores/useAuthStore';
 
 function App() {
   const setUser = useAuthStore((state) => state.setUser);

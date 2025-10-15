@@ -1,16 +1,16 @@
-import { Paper, PasswordInput, TextInput, Text } from "@mantine/core";
+import { Paper, PasswordInput, TextInput, Text } from '@mantine/core';
 
 const newInputStyles = (theme) => ({
   input: {
-    color: theme.colors["light-gray"][1],
+    color: theme.colors['light-gray'][1],
     paddingLeft: theme.spacing.xxs,
   },
   label: {
-    top: "-10px",
-    position: "absolute",
+    top: '-10px',
+    position: 'absolute',
     paddingLeft: theme.spacing.xxs,
     paddingRight: theme.spacing.xxs,
-    backgroundColor: theme.colors["dark-blue"][9],
+    backgroundColor: theme.colors['dark-blue'][9],
   },
 });
 
@@ -23,11 +23,11 @@ function InputWrapper({ children }) {
       py="xs"
       bg="transparent"
       sx={(theme) => ({
-        borderColor: theme.colors["dark-gray"][7],
-        position: "relative",
-        transition: "border-color 250ms ease",
-        "&:focus-within": {
-          borderColor: theme.colors["accent-cyan"][6],
+        borderColor: theme.colors['dark-gray'][7],
+        position: 'relative',
+        transition: 'border-color 250ms ease',
+        '&:focus-within': {
+          borderColor: theme.colors['accent-cyan'][6],
         },
       })}
     >
