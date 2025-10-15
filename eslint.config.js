@@ -40,6 +40,7 @@ export default defineConfig([
       'react-refresh/only-export-components': 'warn',
 
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'react/prop-types': 'off',
 
       'import/order': [
         'warn',
