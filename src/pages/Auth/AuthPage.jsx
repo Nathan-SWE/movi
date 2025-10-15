@@ -39,7 +39,7 @@ export default function AuthPage() {
           </Button>
           <Text ta="center" fz="sm">
             I already have an account?
-            <Anchor component={Link} to="auth/login">
+            <Anchor component={Link} to="/auth/login">
               <Text component="span" weight={700} px="xs">
                 Login
               </Text>
