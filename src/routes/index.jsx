@@ -3,33 +3,20 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '../App';
 import AuthPage from '../pages/Auth/AuthPage';
 import LoginPage from '../pages/Auth/LoginPage';
-import RecoveryPassword from '../pages/Auth/RecoveryPassword';
+import RecoveryPasswordPage from '../pages/Auth/RecoveryPasswordPage';
 import SignUpPage from '../pages/Auth/SignUpPage';
+import HomePage from '../pages/HomePage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-  },
-  {
-    path: '/auth',
     children: [
-      {
-        index: true,
-        element: <AuthPage />,
-      },
-      {
-        path: 'signup',
-        element: <SignUpPage />,
-      },
-      {
-        path: 'login',
-        element: <LoginPage />,
-      },
-      {
-        path: 'recovery',
-        element: <RecoveryPassword />,
-      },
+      { index: true, element: <HomePage /> },
+      { path: 'auth', element: <AuthPage /> },
+      { path: 'auth/signup', element: <SignUpPage /> },
+      { path: 'auth/login', element: <LoginPage /> },
+      { path: 'auth/recovery', element: <RecoveryPasswordPage /> },
     ],
   },
 ]);
