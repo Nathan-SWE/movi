@@ -24,7 +24,7 @@ export default function useLoginForm() {
     try {
       await signInWithEmail(values.email, values.password);
       console.log('Login successful!');
-      navigate('/auth'); //navegar para home depois
+      navigate('/');
     } catch (error) {
       if (error.code === 'auth/invalid-credential') {
         form.setFieldError('email', 'Email or password incorrect.');

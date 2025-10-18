@@ -38,7 +38,7 @@ export default function useSingUpForm() {
       }
 
       console.log('Account created successfully!');
-      navigate('/auth'); //temporário. redirecionar para home depois
+      navigate('/');
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         form.setFieldError(
