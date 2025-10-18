@@ -1,16 +1,25 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
+import { StrictMode } from 'react';
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { MantineProvider } from '@mantine/core';
+import { MantineEmotionProvider, emotionTransform } from '@mantine/emotion';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createRoot } from 'react-dom/client';
+import '@mantine/core/styles.css';
+
+import { Router } from './routes';
+import { theme } from './theme.js';
+import './global.css';
 
 const queryClient = new QueryClient();
 
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <MantineEmotionProvider>
+        <MantineProvider theme={theme} stylesTransform={emotionTransform}>
+          <Router />
+        </MantineProvider>
+      </MantineEmotionProvider>
     </QueryClientProvider>
   </StrictMode>
 );
