@@ -13,9 +13,12 @@ import { Link } from 'react-router-dom';
 
 import GoogleLogo from '../../assets/icon-google.svg';
 import ImageSkeleton from '../../components/ui/ImageSkeleton';
-import { signInWithGoogle } from '../../features/authentication/authService';
+import useGoogleSignIn from '../../features/authentication/hooks/useGoogleSignIn';
 
 export default function AuthPage() {
+  const { googleError, isGoogleLoading, handleGoogleSignIn } =
+    useGoogleSignIn();
+
   return (
     <Flex h="100vh" align="center" justify="center">
       <Container size="xs">
@@ -47,17 +50,25 @@ export default function AuthPage() {
             </Anchor>
           </Text>
           <Divider label="Or sign in with" labelPosition="center" my="lg" />
-          <Button
-            fullWidth
-            size="lg"
-            variant="default"
-            bg={'light-gray.1'}
-            fw={500}
-            leftSection={<Image src={GoogleLogo} h={20} alt="Google Logo" />}
-            onClick={signInWithGoogle}
-          >
-            Sign in with Google
-          </Button>
+          <div>
+            <Button
+              fullWidth
+              size="lg"
+              variant="default"
+              bg={'light-gray.1'}
+              fw={500}
+              leftSection={<Image src={GoogleLogo} h={20} alt="Google Logo" />}
+              onClick={handleGoogleSignIn}
+              loading={isGoogleLoading}
+            >
+              Sign in with Google
+            </Button>
+            {googleError && (
+              <Text c="danger-red" size="xs" ta="center" mt="xs">
+                {googleError}
+              </Text>
+            )}
+          </div>
         </Stack>
       </Container>
     </Flex>
